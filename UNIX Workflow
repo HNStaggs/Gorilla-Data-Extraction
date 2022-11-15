@@ -1,0 +1,71 @@
+###Gorilla output files contain a lot of information and you must extract the relevant details.
+##After you download all of the participant files from Gorilla, create a directory containing all of the files from your participants.
+
+====================================================================================================================================================================
+
+#Open UNIX command prompt and navigate to the directory
+cd MasterFolderName #change directory to folder containing all participant files
+pwd #print working directory to confirm
+ls #list all files to verify 
+
+====================================================================================================================================================================
+
+#recursive grep search looks through all files and subdirectories in the master data folder, the search term is your task name or survey name
+#the task name is located in the title of the data output files from Gorilla - it consists of a 4 unit alphanumeric string 
+#For example, a task could be "task-18j2" and a questionnaire could be "questionnaire-7d8a"
+#output is a single .csv file
+grep -r 'task-name' > taskname_raw_output.csv
+#verify new file by piping head function to see first 50 lines of output, can also view entire file with just cat function
+cat taskname_raw_output.csv | head -50
+
+====================================================================================================================================================================
+
+#check data files to find which columns are necessary for your analysis
+#cut function, with comma delimiter, grabs columns 13,28,29,30 (which contain the desired data in this case), and outputs those variables to a new file called prep
+cut -d',' -f13,28,29 taskname_raw_output.csv > taskname_prep.csv
+#verify new file by piping head function to see some output
+cat taskname_prep.csv | head -50
+
+====================================================================================================================================================================
+
+#within each variable column there are multiple data outputs with different labels depending on the data capture features in your experiment
+#for example, you may have reaction time data for a fixation trial followed by reaction time for a particular response from a participant
+#if the fixation trial data is not necessary for your analysis (e.g., its a fixed value for every trial), you can subset the actual responses that you care about
+#specify the response variable name needed, and output to new file called called clean
+grep 'response-variable' taskname_prep.csv > taskname_clean.csv
+
+#verify new file by piping head function to see some output
+cat taskname_clean.csv | head -50
+
+====================================================================================================================================================================
+
+#if multiple tasks are being combined into one master data file, use cat function to join files, and output to new combined file
+#this will work best if you clean up each file to have the same number of columns before joining
+cat taskname1_clean.csv taskname2_clean.csv > combined_clean.csv
+
+#verify new file by piping head function and tail function to output from the beginning and end of the file
+cat combined_clean.csv | head -50
+cat combined_clean.csv | tail -50
+
+====================================================================================================================================================================
+
+#Replacing and updating text from data output into numerical data
+#use sed function to replace all instances of No with value of 0
+# the "g" flag refers to global which means the update will be applied to the whole file
+sed 's/No/0/g' combined_clean.csv > combined_clean_update.csv
+
+#verify new file by piping head function and tail function to output from the beginning and end of the file
+cat combined_clean_update.csv | head -50
+cat combined_clean_update.csv | tail -50
+
+====================================================================================================================================================================
+
+#call file witg cat command, and pipe data to the sort function with comma delimiter specified
+#use -k1 flag to sort by the first column, in this case it is "participant ID"
+#output to final clean file
+
+cat combined_clean_update.csv | sort -t',' -k1 > final_clean_data.csv
+
+====================================================================================================================================================================
+
+#Now you can load your clean data into the statistical processing package of your choice. 
