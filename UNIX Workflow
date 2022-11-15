@@ -49,10 +49,16 @@ cat combined_clean.csv | tail -50
 
 ====================================================================================================================================================================
 
-#Replacing and updating text from data output into numerical data
-#use sed function to replace all instances of No with value of 0
+#Replacing and updating text from data output
+#Use sed to delete certain columns if you have extra data 
+#use sed function to replace all instances of categorical data with numerical data
 # the "g" flag refers to global which means the update will be applied to the whole file
+
+#replaces the word No with the number 0
 sed 's/No/0/g' combined_clean.csv > combined_clean_update.csv
+
+#replaces the word No and its comma delimiter with nothing, bascially deletes an extra value that may be contained in some observations and not others
+sed 's/No,//g' combined_clean.csv > combined_clean_update.csv
 
 #verify new file by piping head function and tail function to output from the beginning and end of the file
 cat combined_clean_update.csv | head -50
@@ -60,7 +66,7 @@ cat combined_clean_update.csv | tail -50
 
 ====================================================================================================================================================================
 
-#call file witg cat command, and pipe data to the sort function with comma delimiter specified
+#call file with cat command, and pipe data to the sort function with comma delimiter specified
 #use -k1 flag to sort by the first column, in this case it is "participant ID"
 #output to final clean file
 
