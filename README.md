@@ -1,5 +1,5 @@
 # Gorilla-Data-Extraction
-Unix commands for extracting variables from Gorilla experiement builder files. 
+Unix commands for extracting variables from Gorilla experiment builder files. 
 While similar approaches can be done in statistical packages, I find UNIX to be more accessible and efficient. 
 
 I am not affiliated with Gorilla in any capacity.
