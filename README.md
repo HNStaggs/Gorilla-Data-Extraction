@@ -2,7 +2,7 @@
 Unix commands for extracting variables from Gorilla experiement builder files. 
 While similar approaches can be done in statistical packages, I find UNIX to be more accessible and efficient. 
 
-I am not affiliated with Gorilla in any form. I am just a happy customer.
+I am not affiliated with Gorilla in any capacity.
 
 Gorilla experiment builder is a customizable, browser-based data collection tool for self-report data and cognitive testing in experimental psychology. It is affordable and user-friendly. See their website for more details https://gorilla.sc/
 
