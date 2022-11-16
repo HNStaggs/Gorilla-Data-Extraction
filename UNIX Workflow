@@ -21,8 +21,9 @@ cat taskname_raw_output.csv | head -50
 ====================================================================================================================================================================
 
 #check data files to find which columns are necessary for your analysis
-#cut function, with comma delimiter, grabs columns 13,28,29,30 (which contain the desired data in this case), and outputs those variables to a new file called prep
-cut -d',' -f13,28,29 taskname_raw_output.csv > taskname_prep.csv
+#cut function, with comma delimiter, grabs columns 13,25,28,29,30 (which contain the desired data in this case: participant id, task name, response variables, value)
+#outputs those variables to a new file called prep
+cut -d',' -f13,25,28,29,30 taskname_raw_output.csv > taskname_prep.csv
 #verify new file by piping head function to see some output
 cat taskname_prep.csv | head -50
 
