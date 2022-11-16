@@ -1,6 +1,6 @@
 # Gorilla-Data-Extraction
 Unix commands for extracting variables from Gorilla experiment builder files. 
-While similar approaches can be done in statistical packages, I find UNIX to be more accessible and efficient. 
+While similar approaches can be done in statistical packages, I find UNIX to be more accessible and efficient, and it can handle big data. 
 
 I am not affiliated with Gorilla in any capacity.
 
