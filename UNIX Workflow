@@ -75,4 +75,11 @@ cat combined_clean_update.csv | sort -t',' -k1 > final_clean_data.csv
 
 ====================================================================================================================================================================
 
+#add a header to the new dataset
+sed '1s/^/Variable1,Variable2,Variable3,Variable4\n/' old_dataset.csv > new_dataset.csv
+
+
+===================================================================================================================================================================
+
+
 #Now you can load your clean data into the statistical processing package of your choice. 
