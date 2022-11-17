@@ -1,4 +1,5 @@
 ###Gorilla output folders contain multiple files with a lot of information for each participant and you must extract the relevant details.
+##I suggest downloading the short-form version of the data. 
 ##After you download all of the participant files from Gorilla, create a directory containing all of the folders from your participants.
 
 ====================================================================================================================================================================
